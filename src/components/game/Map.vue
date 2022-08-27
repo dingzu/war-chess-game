@@ -3,12 +3,12 @@
   <div class="map-module">
     <!-- 根据地图数据渲染地形 -->
     <div class="map-wrp">
-      <div class="map-row" v-for="(row, i) in matrix" :key="i">
+      <div class="map-row" v-for="(row, i) in STATE.mapMatrix" :key="i">
         <TerrainUnit
           v-for="(col, j) in row"
           :key="j"
           :type="col"
-          @mouseenter="postTerrainData(col, i, j)"
+          @mouseenter="postTerrainData(i, j)"
         />
       </div>
     </div>
@@ -20,29 +20,9 @@ import TerrainUnit from "@/components/game/TerrainUnit.vue";
 export default {
   name: "mapModule",
   components: { TerrainUnit },
-  data() {
-    return {
-      size: [10, 10], // 定义地图的大小
-      matrix: [
-        ["00", "00", "00", "00", "00", "00", "00", "00", "00", "00"],
-        ["00", "00", "00", "00", "00", "00", "00", "00", "00", "00"],
-        ["00", "01", "01", "01", "00", "00", "01", "01", "01", "00"],
-        ["00", "01", "00", "00", "00", "00", "00", "00", "01", "00"],
-        ["00", "01", "00", "00", "00", "00", "00", "00", "01", "00"],
-        ["00", "01", "00", "00", "00", "00", "00", "00", "01", "00"],
-        ["00", "01", "00", "00", "00", "00", "00", "00", "01", "00"],
-        ["00", "01", "01", "01", "00", "00", "01", "01", "01", "00"],
-        ["00", "00", "00", "00", "00", "00", "00", "00", "00", "00"],
-        ["00", "00", "00", "00", "00", "00", "00", "00", "00", "00"],
-      ],
-    };
-  },
   methods: {
-    postTerrainData(type, x, y) {
-      this.STATE.recentTerrain = {
-        type: type,
-        position: `${x},${y}`,
-      };
+    postTerrainData(x, y) {
+      this.STATE.recentTerrain = [x, y];
     },
   },
 };

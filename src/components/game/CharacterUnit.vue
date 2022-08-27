@@ -29,10 +29,7 @@ export default {
   },
   methods: {
     postTerrainData() {
-      this.STATE.recentTerrain = {
-        type: "角色",
-        position: `${this.STATE.character[this.id].position}`,
-      };
+      this.STATE.recentTerrain = this.STATE.characters[this.id].position;
     },
     resolveActive() {
       if (this.STATE.activeCharacter == this.id) {
