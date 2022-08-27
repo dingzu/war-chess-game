@@ -1,5 +1,9 @@
 # warchess
 
+## 设计文档
+
+设计文档[https://shimo.im/docs/vVqRV5rEe4CWrGqy]
+
 ## Project setup
 ```
 yarn install
