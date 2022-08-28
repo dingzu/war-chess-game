@@ -7,7 +7,7 @@
         <TerrainUnit
           v-for="(col, j) in row"
           :key="j"
-          :type="col"
+          :type="col[0]"
           @mouseenter="postTerrainData(i, j)"
         />
       </div>

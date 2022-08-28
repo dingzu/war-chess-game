@@ -14,17 +14,20 @@
         />
       </div>
     </div>
+    <!--UI-->
     <TerrainWindow />
+    <CharacterWindow />
   </div>
 </template>
 
 <script>
 import Map from "@/components/game/Map.vue";
 import TerrainWindow from "@/components/ui/TerrainWindow.vue";
+import CharacterWindow from "@/components/ui/CharacterWindow.vue";
 import CharacterUnit from "@/components/game/CharacterUnit.vue";
 export default {
   name: "StageModule",
-  components: { Map, TerrainWindow, CharacterUnit },
+  components: { Map, TerrainWindow, CharacterWindow, CharacterUnit },
 };
 </script>
 

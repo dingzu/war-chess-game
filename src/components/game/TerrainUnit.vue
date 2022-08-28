@@ -25,9 +25,9 @@ export default {
   height 80px
   border 1px solid #ccc
   background-color #000
-  &.type-000
+  &.type-00
     background-color #bbb
-  &.type-001
+  &.type-01
     background-color #000
   &:hover
     border 4px solid blue
