@@ -1,5 +1,5 @@
 <template>
-  <div class="character-unit" @mouseenter="postTerrainData()" @mousedown="active()" :class="resolveActive()"></div>
+  <div class="character-unit" @mouseenter="postTerrainData()" @mousedown="active()" :class="resolveActive()" :style="resolvePosition()"></div>
 </template>
 
 <style lang="stylus">
@@ -9,6 +9,7 @@
   height var(--cellSize)
   border 10px solid #ccc
   background-color red
+  position absolute
   &:hover
     border 10px solid blue
   &.active
@@ -19,6 +20,9 @@
 export default {
   props: {
     id: {
+      require: true,
+    },
+    position: {
       require: true,
     },
   },
@@ -39,6 +43,10 @@ export default {
       } else {
         this.STATE.activeCharacter = this.id;
       }
+    },
+    resolvePosition() {
+      return `left:${this.position[0] * this.CONFIG.cellSize}px;
+      top:${this.position[1] * this.CONFIG.cellSize}px`;
     },
   },
 };

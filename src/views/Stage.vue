@@ -8,7 +8,7 @@
       <!--渲染标示框：层级2-->
       <!--渲染角色：层级3-->
       <div class="charactor-list">
-        <CharacterUnit v-for="(item, i) in STATE.characters" :key="i" :id="item.id" />
+        <CharacterUnit v-for="(item, i) in STATE.characters" :key="i" :id="i" :position="item.position" />
       </div>
       <!--渲染地图遮罩：层级4-->
     </div>
