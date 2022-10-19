@@ -10,8 +10,8 @@ import terrain from "@/data/terrain.js";
 export default {
   computed: {
     terrainType() {
-      const y = this.STATE.recentTerrain[0];
-      const x = this.STATE.recentTerrain[1];
+      const y = this.STATE.recentTerrain[1];
+      const x = this.STATE.recentTerrain[0];
       const type = this.STATE.mapMatrix[y][x][0];
       return terrain.type[type];
     },

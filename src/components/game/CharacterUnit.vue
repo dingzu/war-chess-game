@@ -17,6 +17,7 @@
 </style>
 
 <script>
+import resolveMoveStore from "./resolveMoveStore.js";
 export default {
   props: {
     id: {
@@ -38,11 +39,27 @@ export default {
       }
     },
     active() {
+      // 单位变成激活态
       if (this.STATE.activeCharacter == this.id) {
         this.STATE.activeCharacter = "";
       } else {
         this.STATE.activeCharacter = this.id;
       }
+      // 单位的移动状态显示变成激活态
+      const moveData = this.STATE.activeCharacterMoveData;
+      if (!moveData.active) {
+        if (moveData.recentActiveId === this.id) {
+          moveData.active = true;
+        } else {
+          moveData.recentActiveId = this.id;
+          moveData.store = resolveMoveStore(this.id);
+          moveData.active = true;
+        }
+      } else if (moveData.recentActiveId === this.id) {
+        moveData.active = false;
+      }
+      console.log("激活移动状态", moveData);
+      this.STATE.activeCharacterMoveData = moveData;
     },
     resolvePosition() {
       return `left:${this.position[0] * this.CONFIG.cellSize}px;
