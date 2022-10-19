@@ -20,9 +20,7 @@ export default {
 
 <style lang="stylus">
 .character-window
-  margin auto
   padding 12px
-  width 300px
   background-color blue
   color #fff
 </style>

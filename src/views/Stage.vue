@@ -3,12 +3,14 @@
   <div class="stage">
     <!--操作区域-->
     <div class="game-view">
-      <!--渲染地图-->
+      <!--渲染地图：层级1-->
       <Map />
-      <!--渲染角色-->
+      <!--渲染标示框：层级2-->
+      <!--渲染角色：层级3-->
       <div class="charactor-list">
         <CharacterUnit v-for="(item, i) in STATE.characters" :key="i" :id="item.id" />
       </div>
+      <!--渲染地图遮罩：层级4-->
     </div>
     <!--UI 区域-->
     <div class="game-ui">
@@ -40,15 +42,16 @@ $ui-padding = 40px
     overflow scroll
     left $ui-padding
     top $ui-padding
-    right $ui-width
-    bottom 80px
+    right: $ui-width + 2 * $ui-padding
+    bottom $ui-padding
     background-color #f5f5f5
   .game-ui
     position absolute
-    right 0
+    right $ui-padding
     top $ui-padding
     bottom $ui-padding
     width $ui-width
+    background-color #f5f5f5
   .charactor-list
     position absolute
     top 0
