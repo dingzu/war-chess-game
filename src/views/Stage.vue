@@ -1,22 +1,20 @@
 <!-- 游戏关卡文件 -->
 <template>
   <div class="stage">
-    <p>这是一个关卡</p>
+    <!--操作区域-->
     <div class="game-view">
       <!--渲染地图-->
       <Map />
       <!--渲染角色-->
       <div class="charactor-list">
-        <CharacterUnit
-          v-for="(item, i) in STATE.characters"
-          :key="i"
-          :id="item.id"
-        />
+        <CharacterUnit v-for="(item, i) in STATE.characters" :key="i" :id="item.id" />
       </div>
     </div>
-    <!--UI-->
-    <TerrainWindow />
-    <CharacterWindow />
+    <!--UI 区域-->
+    <div class="game-ui">
+      <TerrainWindow />
+      <CharacterWindow />
+    </div>
   </div>
 </template>
 
@@ -32,14 +30,25 @@ export default {
 </script>
 
 <style lang="stylus">
+$ui-width = 400px
+$ui-padding = 40px
+
 .stage
   width 100%
   .game-view
-    position relative
+    position absolute
     overflow scroll
-    margin auto
-    width 840px
-    height 840px
+    left $ui-padding
+    top $ui-padding
+    right $ui-width
+    bottom 80px
+    background-color #f5f5f5
+  .game-ui
+    position absolute
+    right 0
+    top $ui-padding
+    bottom $ui-padding
+    width $ui-width
   .charactor-list
     position absolute
     top 0

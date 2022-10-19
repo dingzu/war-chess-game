@@ -4,12 +4,7 @@
     <!-- 根据地图数据渲染地形 -->
     <div class="map-wrp">
       <div class="map-row" v-for="(row, i) in STATE.mapMatrix" :key="i">
-        <TerrainUnit
-          v-for="(col, j) in row"
-          :key="j"
-          :type="col[0]"
-          @mouseenter="postTerrainData(i, j)"
-        />
+        <TerrainUnit v-for="(col, j) in row" :key="j" :type="col[0]" @mouseenter="postTerrainData(i, j)" />
       </div>
     </div>
   </div>

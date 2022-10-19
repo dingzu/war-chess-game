@@ -1,17 +1,12 @@
 <template>
-  <div
-    class="character-unit"
-    @mouseenter="postTerrainData()"
-    @mousedown="active()"
-    :class="resolveActive()"
-  ></div>
+  <div class="character-unit" @mouseenter="postTerrainData()" @mousedown="active()" :class="resolveActive()"></div>
 </template>
 
 <style lang="stylus">
 .character-unit
   box-sizing border-box
-  width 80px
-  height 80px
+  width var(--cellSize)
+  height var(--cellSize)
   border 10px solid #ccc
   background-color red
   &:hover

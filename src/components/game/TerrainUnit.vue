@@ -21,8 +21,8 @@ export default {
 <style lang="stylus">
 .terrain-unit
   box-sizing border-box
-  width 80px
-  height 80px
+  width var(--cellSize)
+  height var(--cellSize)
   border 1px solid #ccc
   background-color #000
   &.type-00
