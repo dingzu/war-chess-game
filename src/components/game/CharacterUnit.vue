@@ -17,7 +17,7 @@
 </style>
 
 <script>
-import resolveMoveStore from "../components/game/resolveMoveStore.ts";
+import resolveMoveStore from "@/utils/resolveMoveStore.ts";
 export default {
   props: {
     id: {
