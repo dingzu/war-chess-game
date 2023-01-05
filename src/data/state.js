@@ -9,7 +9,7 @@ const data = {
             group: 0,
             move: {
                 times: 1,
-                Speed: [5],
+                speed: 5,
                 type: 0,
                 intercept: 3,
             }
@@ -20,7 +20,7 @@ const data = {
             group: 1,
             move: {
                 times: 1,
-                Speed: [5],
+                speed: 5,
                 type: 0,
                 intercept: 3,
             }

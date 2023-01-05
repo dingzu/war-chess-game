@@ -17,7 +17,7 @@
 </style>
 
 <script>
-import resolveMoveStore from "./resolveMoveStore.js";
+import resolveMoveStore from "../components/game/resolveMoveStore.ts";
 export default {
   props: {
     id: {
@@ -52,7 +52,7 @@ export default {
           moveData.active = true;
         } else {
           moveData.recentActiveId = this.id;
-          moveData.store = resolveMoveStore(this.id);
+          moveData.store = resolveMoveStore.ts(this.id);
           moveData.active = true;
         }
       } else if (moveData.recentActiveId === this.id) {

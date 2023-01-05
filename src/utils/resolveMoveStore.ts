@@ -1,31 +1,32 @@
 /* 计算位置是否可以移动的函数 */
-import state from '../../data/state.js'
-import terrain from '../../data/terrain.js'
+import state from '../data/state.js'
+import terrain from '../data/terrain.js'
 
-// 计算出的可以移动的位置记录到这里
+// 可以移动的位置记录到这里
 let store = {}
-// 获取当前单位
-let recentCharacter = {}
+
+// 主函数
+
+let recentCharacter = new Unit()
 
 export default function (id) {
-  // 获取当前单位
   recentCharacter = state.characters[id]
-  // 获取单位初始位置
-  const begin = recentCharacter.position
-  // 初始化移动数据模型
+  // 起点
+  const begin = recentCharacter.position // positin 数据为 [x,y]
+  // 初始化
   let moveData = {
-    moveLink: [begin],
-    speed: recentCharacter.move.speed[0]
+    moveLink: [begin], // 记录行动轨迹，便于以后绘制行动路线
+    speed: recentCharacter.move.speed[0] // 移动力
   }
-  // 开始移动测试
+  // 移动力大于 0 则可以移动
   if (moveData.speed > 0) {
     moveTest(moveData)
   }
-  // 输出测试结果
+  // 输出移动测试结果
   return store
 }
 
-// 尝试向四个方向移动
+// 移动循环测试（同时测试 4 向）
 function moveTest(moveData) {
   const position = moveData.moveLink[moveData.moveLink.length - 1]
   // 向上移动
@@ -41,9 +42,9 @@ function tryMoveTo(moveTo, moveData) {
   const moveAble = isMoveAble(moveTo)
   // 如果可以移动进行移动计算
   if (inMap && moveAble[0]) {
-    moveData.speed -= moveAble[1]
+    moveData.speed = speedCost(moveData, moveAble)
+    // 如果剩余移动力
   }
-
 }
 
 // 检查当前节点是否在地图上
@@ -68,4 +69,9 @@ function isMoveAble(moveTo) {
   }
   // 如果不符合要求，返回不可移动
   return [false]
+}
+
+// 计算移动消耗
+function speedCost(moveData, costData) {
+  return moveData.speed - costData[1]
 }
